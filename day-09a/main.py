@@ -7,13 +7,13 @@ total_risk = 0
 for i, row in enumerate(heightmap):
     for j, height in enumerate(row):
         lowest = True
-        if 0 <= i < len(input_file_rows) - 1 and height >= heightmap[i + 1][j]:
+        if i < len(input_file_rows) - 1 and height >= heightmap[i + 1][j]:
             lowest = False
-        if 0 <= j < len(row) - 1 and height >= heightmap[i][j + 1]:
+        if j < len(row) - 1 and height >= heightmap[i][j + 1]:
             lowest = False
-        if len(row) - 1 >= j > 0 and height >= heightmap[i][j - 1]:
+        if j > 0 and height >= heightmap[i][j - 1]:
             lowest = False
-        if len(input_file_rows) - 1 >= i > 0 and height >= heightmap[i - 1][j]:
+        if i > 0 and height >= heightmap[i - 1][j]:
             lowest = False
         if lowest:
             total_risk += height + 1
